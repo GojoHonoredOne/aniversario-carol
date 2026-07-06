@@ -86,25 +86,25 @@ st.markdown("""
         box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
     .card-festa {
-        background-color: rgba(255, 255, 255, 0.98);
+        background-color: rgba(74, 0, 128, 0.85); /* Fundo escuro para a fonte branca destacar */
         padding: 35px;
         border-radius: 25px;
         box-shadow: 0 20px 45px rgba(0,0,0,0.4);
-        border: 4px solid #6600cc;
+        border: 4px solid #ffcc00; /* Borda dourada combinando com o tema */
         margin-bottom: 30px;
     }
     .info-titulo {
-        color: #2e004d;
+        color: #ffcc00 !important; /* Título interno em dourado para contraste lindo */
         text-align: center;
         margin-top: 0;
         font-weight: 800;
-        font-size: 1.6rem;
-        border-bottom: 2px solid #e6ccff;
+        font-size: 1.8rem;
+        border-bottom: 2px solid #ffcc00;
         padding-bottom: 10px;
     }
     .detalhe-linha {
-        font-size: 1.25rem;
-        color: #1a0033;
+        font-size: 1.3rem;
+        color: #ffffff !important; /* FONTE 100% BRANCA NAS INFORMAÇÕES */
         margin-bottom: 18px;
     }
     .alerta-peruca {
@@ -119,11 +119,11 @@ st.markdown("""
         margin: 25px 0;
     }
     .card-salsicha {
-        background-color: #f3ebff;
+        background-color: rgba(255, 255, 255, 0.1);
         padding: 18px;
         border-radius: 15px;
-        border-left: 6px solid #4a0080;
-        color: #1a0033;
+        border-left: 6px solid #ffcc00;
+        color: #ffffff;
         font-size: 1.1rem;
         text-align: center;
     }
@@ -138,7 +138,7 @@ st.markdown("""
         text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
     }
     
-    /* GLOBAIS DE FORMULÁRIO (Garante cor branca nos textos e labels) */
+    /* GLOBAIS DE FORMULÁRIO */
     h2, h3 {
         color: #ffcc00 !important;
         font-weight: 700 !important;
@@ -172,7 +172,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Nova data atualizada da festa: 26 de Julho de 2026 às 15:30
+# Data da festa: 26 de Julho de 2026 às 15:30
 DATA_DO_ANIVERSARIO = datetime(2026, 7, 26, 15, 30)
 
 # ==========================================
@@ -198,7 +198,7 @@ if not st.session_state.convite_aberto:
 if st.session_state.convite_aberto:
     st.balloons()
     
-    # CARD 1: Detalhes Fundamentais Atualizados
+    # CARD 1: Detalhes Fundamentais Atualizados com Letra Branca
     st.markdown('<div class="card-festa">', unsafe_allow_html=True)
     st.markdown('<h2 class="info-titulo">🗓️ INFORMAÇÕES DA FESTA</h2>', unsafe_allow_html=True)
     st.markdown('<p class="detalhe-linha">📅 <b>Quando:</b> Domingo, 26 de Julho de 2026</p>', unsafe_allow_html=True)
@@ -224,7 +224,7 @@ if st.session_state.convite_aberto:
 
     st.markdown("<br><hr>", unsafe_allow_html=True)
 
-    # CARD 3: Confirmação de Presença Limpa
+    # CARD 3: Confirmação de Presença
     st.markdown("<h3 style='text-align:center;'>📝 Confirme sua Presença</h3>", unsafe_allow_html=True)
     with st.form("form_evento", clear_on_submit=True):
         nome_convidado = st.text_input("Seu Nome e Sobrenome:")
@@ -264,7 +264,7 @@ if st.session_state.convite_aberto:
     nome_dj = st.text_input("Quem está sugerindo? (Seu nome completo):")
     
     if st.button("Sugerir Música 💿"):
-        if musica_sug and artista_sug and nome_dj:
+        if musica_sug and artist_sug and nome_dj:
             conn = sqlite3.connect(DB_NAME)
             cursor = conn.cursor()
             cursor.execute(
@@ -332,7 +332,7 @@ if st.session_state.convite_aberto:
         st.dataframe(dados_musica)
 
     # ==========================================
-    # 4. EXIGÊNCIA DA IMAGEM E TEXTO
+    # 4. EXIGÊNCIA MÁXIMA DA IMAGEM E TEXTO
     # ==========================================
     st.markdown('<p class="texto-final">"Carol se vc n for de peruca"</p>', unsafe_allow_html=True)
     
