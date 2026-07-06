@@ -47,19 +47,18 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Inicializa o banco de dados imediatamente ao rodar o script
 init_db()
 
 # ==========================================
-# 2. CONFIGURAÇÃO VISUAL PREMIUM (ROXO & SALSICHA)
+# 2. CONFIGURAÇÃO VISUAL (Contraste e Legibilidade)
 # ==========================================
 st.set_page_config(
-    page_title="Aniversário Memorável da Carol 🎉",
+    page_title="Aniversário da Carol 🎉",
     page_icon="🐕",
     layout="centered"
 )
 
-# CSS Customizado de Alta Performance Estética
+# Estilização focada em leitura fácil para a família
 st.markdown("""
     <style>
     .stApp {
@@ -68,7 +67,7 @@ st.markdown("""
     .titulo-principal {
         color: #ffcc00;
         text-align: center;
-        font-size: 3rem;
+        font-size: 2.8rem;
         font-weight: 900;
         margin-bottom: 5px;
         text-shadow: 3px 3px 12px rgba(255, 204, 0, 0.4);
@@ -77,7 +76,7 @@ st.markdown("""
     .subtitulo {
         color: #ffffff;
         text-align: center;
-        font-size: 1.35rem;
+        font-size: 1.3rem;
         line-height: 1.6;
         background-color: rgba(74, 0, 128, 0.6);
         padding: 22px;
@@ -109,7 +108,7 @@ st.markdown("""
         margin-bottom: 18px;
     }
     .alerta-peruca {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: bold;
         color: #ffffff;
         text-align: center;
@@ -118,7 +117,6 @@ st.markdown("""
         border-radius: 15px;
         box-shadow: 0 5px 15px rgba(102, 0, 204, 0.4);
         margin: 25px 0;
-        letter-spacing: 1px;
     }
     .card-salsicha {
         background-color: #f3ebff;
@@ -127,7 +125,6 @@ st.markdown("""
         border-left: 6px solid #4a0080;
         color: #1a0033;
         font-size: 1.1rem;
-        font-style: italic;
         text-align: center;
     }
     .texto-final {
@@ -140,25 +137,8 @@ st.markdown("""
         font-family: 'Comic Sans MS', cursive, sans-serif;
         text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
     }
-    /* Estilização do Botão de Entrada */
-    div.stButton > button:first-child {
-        background: linear-gradient(45deg, #7b2cbf, #9d4edd);
-        color: white;
-        font-size: 1.6rem;
-        font-weight: bold;
-        padding: 20px 60px;
-        border-radius: 50px;
-        border: 3px solid #ffcc00;
-        box-shadow: 0 10px 30px rgba(157, 78, 221, 0.6);
-        transition: all 0.3s ease;
-        display: block;
-        margin: 50px auto;
-    }
-    div.stButton > button:first-child:hover {
-        transform: scale(1.07) translateY(-2px);
-        box-shadow: 0 15px 35px rgba(157, 78, 221, 0.8);
-    }
-    /* Cores Globais */
+    
+    /* GLOBAIS DE FORMULÁRIO (Garante cor branca nos textos e labels) */
     h2, h3 {
         color: #ffcc00 !important;
         font-weight: 700 !important;
@@ -166,13 +146,34 @@ st.markdown("""
     label {
         color: #ffffff !important;
         font-size: 1.15rem !important;
-        font-weight: 500 !important;
+        font-weight: bold !important;
+    }
+    p {
+        color: #ffffff;
+    }
+    
+    /* Botão Principal de Entrada */
+    div.stButton > button:first-child {
+        background: linear-gradient(45deg, #7b2cbf, #9d4edd);
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 15px 45px;
+        border-radius: 50px;
+        border: 3px solid #ffcc00;
+        box-shadow: 0 10px 30px rgba(157, 78, 221, 0.6);
+        transition: all 0.3s ease;
+        display: block;
+        margin: 40px auto;
+    }
+    div.stButton > button:first-child:hover {
+        transform: scale(1.05);
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Data do Evento para contagem regressiva
-DATA_DO_ANIVERSARIO = datetime(2026, 10, 15, 20, 0)
+# Nova data atualizada da festa: 26 de Julho de 2026 às 15:30
+DATA_DO_ANIVERSARIO = datetime(2026, 7, 26, 15, 30)
 
 # ==========================================
 # 3. CONTROLE DE ESTADO DA INTERFACE
@@ -180,38 +181,37 @@ DATA_DO_ANIVERSARIO = datetime(2026, 10, 15, 20, 0)
 if 'convite_aberto' not in st.session_state:
     st.session_state.convite_aberto = False
 
-# --- TELA INICIAL (O CONVITE PREMIUM) ---
-st.markdown('<h1 class="titulo-principal">🐾 CONVITE ULTRA EXCLUSIVO 🐾</h1>', unsafe_allow_html=True)
+# --- TELA INICIAL ---
+st.markdown('<h1 class="titulo-principal">🎉 CONVITE ESPECIAL 🎉</h1>', unsafe_allow_html=True)
 st.markdown(
-    '<p class="subtitulo">Você foi abençoado e escolhido a dedo '
-    'para o aniversário da mais linda, memorável e obcecada por salsichas: <b>Ana Carol</b>! 👑🍇</p>', 
+    '<p class="subtitulo">Você foi convidado para comemorar o aniversário '
+    'da pessoa mais linda, memorável e apaixonada por salsichas: <b>Ana Carol</b>! 👑💜</p>', 
     unsafe_allow_html=True
 )
 
 if not st.session_state.convite_aberto:
-    if st.button("Abrir convite especial pois sou um mero mortal perto de Ana Carolina... 🎫"):
+    if st.button("Abrir convite especial... 🎫"):
         st.session_state.convite_aberto = True
         st.rerun()
 
-# --- TELA COMPLETA ULTRA SUPREMA ---
+# --- TELA DO CONVITE ABERTO ---
 if st.session_state.convite_aberto:
     st.balloons()
     
-    # CARD 1: Detalhes Fundamentais
+    # CARD 1: Detalhes Fundamentais Atualizados
     st.markdown('<div class="card-festa">', unsafe_allow_html=True)
-    st.markdown('<h2 class="info-titulo">🗓️ DIÁRIO OFICIAL DA FESTA</h2>', unsafe_allow_html=True)
-    st.markdown('<p class="detalhe-linha">📅 <b>Quando:</b> Quinta-feira, 15 de Outubro de 2026</p>', unsafe_allow_html=True)
-    st.markdown('<p class="detalhe-linha">⏰ <b>Horário de Entrada:</b> A partir das 20:00h</p>', unsafe_allow_html=True)
-    st.markdown('<p class="detalhe-linha">📍 <b>Coordenadas:</b> todo mundo sabe, poupe o trabalho do mlk de ds aqui</p>', unsafe_allow_html=True)
-    st.markdown('<div class="alerta-peruca">🎭 DRESS CODE ABSOLUTO: De peruca, clarinho que sim! 🎭</div>', unsafe_allow_html=True)
+    st.markdown('<h2 class="info-titulo">🗓️ INFORMAÇÕES DA FESTA</h2>', unsafe_allow_html=True)
+    st.markdown('<p class="detalhe-linha">📅 <b>Quando:</b> Domingo, 26 de Julho de 2026</p>', unsafe_allow_html=True)
+    st.markdown('<p class="detalhe-linha">⏰ <b>Horário:</b> A partir das 15h30</p>', unsafe_allow_html=True)
+    st.markdown('<p class="detalhe-linha">📍 <b>Local:</b> Raul bispo dos santos, 311</p>', unsafe_allow_html=True)
+    st.markdown('<div class="alerta-peruca">🎭 DRESS CODE: De peruca, claro que sim! 🎭</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="card-salsicha">🌭 <b>Alerta do Sindicato dos Cães Salsichas:</b> '
-        'Se a Márcia (Carol) aparecer sem peruca, ou você chegar sem uma, os cães estão autorizados a morder calcanhares. Estão avisados! 🐾</div>', 
+        '<div class="card-salsicha">🐕 Todo mundo bem alegre e de peruca para deixar a comemoração da Carol ainda mais divertida! 🐾</div>', 
         unsafe_allow_html=True
     )
     st.markdown('</div>', unsafe_allow_html=True)
     
-    # CARD 2: Cronômetro de Ansiedade
+    # CARD 2: Cronômetro Atualizado
     agora = datetime.now()
     if DATA_DO_ANIVERSARIO > agora:
         faltam = DATA_DO_ANIVERSARIO - agora
@@ -220,23 +220,23 @@ if st.session_state.convite_aberto:
         col2.metric("Horas Restantes", faltam.seconds // 3600)
         col3.metric("Minutos Finais", (faltam.seconds % 3600) // 60)
     else:
-        st.success("🔥 O EVENTO DO SÉCULO COMEÇOU! COLOQUE A PERUCA AGORA! 🔥")
+        st.success("🔥 A FESTA COMEÇOU! 🎉")
 
     st.markdown("<br><hr>", unsafe_allow_html=True)
 
-    # CARD 3: Formulário Integrado ao Banco de Dados (Presença + Bar)
-    st.markdown("<h3 style='text-align:center;'>📝 R.S.V.P & Cálculo do Bar</h3>", unsafe_allow_html=True)
+    # CARD 3: Confirmação de Presença Limpa
+    st.markdown("<h3 style='text-align:center;'>📝 Confirme sua Presença</h3>", unsafe_allow_html=True)
     with st.form("form_evento", clear_on_submit=True):
         nome_convidado = st.text_input("Seu Nome e Sobrenome:")
-        opcao_presenca = st.radio("Confirme seu destino:", [
-            "Sim! Vou e com certeza estarei icônico de peruca.",
-            "Não vou (Quero que os salsichas me julguem)."
+        opcao_presenca = st.radio("Você vai conseguir ir?", [
+            "Sim! Vou e com certeza estarei lá de peruca.",
+            "Infelizmente não vou poder ir."
         ])
-        opcao_bebida = st.selectbox("O que você vai beber para ajudar no estoque do rolê?", [
-             "Apenas Refri/Água 🥤", "Não bebo(esquisito)"
+        opcao_bebida = st.selectbox("O que você prefere beber?", [
+            "Apenas Refri/Água 🥤", "Suco 🧃"
         ])
         
-        btn_enviar = st.form_submit_button("Confirmar Passaporte para a Festa 🐾")
+        btn_enviar = st.form_submit_button("Confirmar Presença 🐾")
         
         if btn_enviar:
             if nome_convidado:
@@ -248,22 +248,22 @@ if st.session_state.convite_aberto:
                 )
                 conn.commit()
                 conn.close()
-                st.toast(f"Registro salvo com sucesso no banco de dados, {nome_convidado}!", icon="💜")
+                st.toast(f"Confirmação salva, obrigado {nome_convidado}!", icon="💜")
             else:
-                st.error("Escreva seu nome, senão como os cachorros vão saber quem é?")
+                st.error("Por favor, digite seu nome para confirmar.")
 
     st.markdown("<hr>", unsafe_allow_html=True)
 
     # CARD 4: Playlist Colaborativa
-    st.markdown("<h3 style='text-align:center;'>🎵 Central de DJs (Sugira Músicas)</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align:center;'>🎵 Sugira Músicas para a Festa</h3>", unsafe_allow_html=True)
     col_m1, col_m2 = st.columns(2)
     with col_m1:
         musica_sug = st.text_input("Nome da Música:")
     with col_m2:
         artista_sug = st.text_input("Nome do Cantor/Banda:")
-    nome_dj = st.text_input("Quem está sugerindo? (Seu nome):")
+    nome_dj = st.text_input("Quem está sugerindo? (Seu nome completo):")
     
-    if st.button("Injetar na Playlist da Festa 💿"):
+    if st.button("Sugerir Música 💿"):
         if musica_sug and artista_sug and nome_dj:
             conn = sqlite3.connect(DB_NAME)
             cursor = conn.cursor()
@@ -273,17 +273,17 @@ if st.session_state.convite_aberto:
             )
             conn.commit()
             conn.close()
-            st.success(f"'{musica_sug}' enviada para a pista!")
+            st.success(f"'{musica_sug}' enviada com sucesso!")
             st.rerun()
 
     st.markdown("<hr>", unsafe_allow_html=True)
 
     # CARD 5: Mural de Recados Eterno
-    st.markdown("<h3 style='text-align:center;'>💬 Mural Oficial de Recados</h3>", unsafe_allow_html=True)
-    nome_mural = st.text_input("Seu nome para o mural:")
-    texto_mural = st.text_area("Mande seu carinho ou piada interna sobre perucas:", max_chars=140)
+    st.markdown("<h3 style='text-align:center;'>💬 Mural de Recados para a Carol</h3>", unsafe_allow_html=True)
+    nome_mural = st.text_input("Seu nome:")
+    texto_mural = st.text_area("Deixe uma mensagem carinhosa:", max_chars=140)
     
-    if st.button("Fixar Recado 📌"):
+    if st.button("Deixar Recado 📌"):
         if nome_mural and texto_mural:
             conn = sqlite3.connect(DB_NAME)
             cursor = conn.cursor()
@@ -295,7 +295,7 @@ if st.session_state.convite_aberto:
             conn.close()
             st.rerun()
 
-    # Puxa os recados do banco e exibe na tela em tempo real
+    # Exibe os recados na tela
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute("SELECT nome, texto FROM mural ORDER BY id DESC")
@@ -308,34 +308,31 @@ if st.session_state.convite_aberto:
 
     st.markdown("<hr>", unsafe_allow_html=True)
 
-    # CARD 6: Painel Super Secreto (SÓ A CAROL ASSESSA COM SENHA)
-    st.markdown("<h3 style='text-align:center;'>🔑 Painel de Controle da Carol</h3>", unsafe_allow_html=True)
-    senha_carol = st.text_input("Senha Admin para ver dados sigilosos:", type="password")
+    # CARD 6: Painel de Controle Secreto da Carol
+    st.markdown("<h3 style='text-align:center;'>🔑 Espaço da Carol</h3>", unsafe_allow_html=True)
+    senha_carol = st.text_input("Senha para ver a lista de confirmados:", type="password")
     
-    # Mude a senha aqui se quiser:
     if senha_carol == "carol123":
         st.subheader("📊 Relatórios em Tempo Real:")
         
         conn = sqlite3.connect(DB_NAME)
         cursor = conn.cursor()
         
-        # Puxa confirmados
         cursor.execute("SELECT nome, status, bebida FROM presenca")
         dados_presenca = cursor.fetchall()
         
-        # Puxa musicas
         cursor.execute("SELECT musica, artista, sugerido_por FROM playlist")
         dados_musica = cursor.fetchall()
         conn.close()
         
-        st.write("**Lista de Presença & Bebidas:**")
+        st.write("**Lista de Presença:**")
         st.dataframe(dados_presenca)
         
-        st.write("**Músicas Sugeridas para o DJ:**")
+        st.write("**Músicas Sugeridas:**")
         st.dataframe(dados_musica)
 
     # ==========================================
-    # 4. EXIGÊNCIA MÁXIMA DA IMAGEM E TEXTO
+    # 4. EXIGÊNCIA DA IMAGEM E TEXTO
     # ==========================================
     st.markdown('<p class="texto-final">"Carol se vc n for de peruca"</p>', unsafe_allow_html=True)
     
@@ -344,9 +341,9 @@ if st.session_state.convite_aberto:
     
     for ext in extensoes:
         if os.path.exists(ext):
-            st.image(ext, use_container_width=True, caption="📸 Alerta Máximo de Intimação!")
+            st.image(ext, use_container_width=True)
             foto_encontrada = True
             break
             
     if not foto_encontrada:
-        st.warning("⚠️ O ecossistema está funcionando! Jogue a foto dentro da pasta 'sitemano' com o nome 'foto_carol.jpg' ou 'foto_carol.jpeg' para concluir o plano perfeito.")
+        st.warning("⚠️ Lembrete: Coloque a foto dela na pasta 'sitemano' com o nome 'foto_carol.jpg' para ela aparecer aqui no final!")
